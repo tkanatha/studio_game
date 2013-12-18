@@ -1,13 +1,42 @@
-def say_hello(name, health=0)
-  "I'm #{name.capitalize} with a health of #{health} as of#{time}."
+class Player
+  def initialize(name, health=100)
+    @name = name.capitalize
+    @health = health
+  end
+
+  def to_s
+    "#{@name} has a health of #{@health}."
+  end
+
+  def heal
+    @health += 10
+    puts "#{@name} got healed!"
+  end
+
+  def smash
+    @health -= 5
+    puts "#{@name} got smashed!"
+  end
 end
 
-def time
-  current_time = Time.new
-  current_time.strftime("%l:%M:%S %p")
-end
+john = Player.new("john")
+puts john
+john.smash
+puts john
+john.heal
+puts john
 
-puts say_hello("john", 7)
-puts say_hello("jane", 8)
-puts say_hello("sally", 4)
-puts say_hello("sam")
+sally = Player.new("sally", 50)
+puts sally
+sally.heal
+puts sally
+sally.smash
+puts sally
+
+
+harriet = Player.new("harriet")
+puts harriet
+harriet.smash
+puts harriet
+harriet.smash
+puts harriet
