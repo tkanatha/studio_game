@@ -31,22 +31,26 @@ class Player
 end
 
 john = Player.new("john")
-puts john
-john.smash
-puts john
-john.heal
-puts john
-
 sally = Player.new("sally", 50)
-puts sally
-sally.heal
-puts sally
-sally.smash
-puts sally
-
 harriet = Player.new("harriet")
-puts harriet
-harriet.smash
-puts harriet
-harriet.smash
-puts harriet
+
+players = [john, sally, harriet]
+puts "There are #{players.size} players in the game."
+players.each do |player|
+  player.smash
+  player.heal
+  player.heal
+  puts player
+end
+
+players.pop
+joe = Player.new("joe", 90)
+players.push(joe)
+
+puts "There are #{players.size} players in the game."
+players.each do |player|
+  player.smash
+  player.heal
+  player.heal
+  puts player
+end
