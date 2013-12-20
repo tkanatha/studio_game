@@ -30,27 +30,48 @@ class Player
   end
 end
 
-john = Player.new("john")
-sally = Player.new("sally", 50)
-harriet = Player.new("harriet")
+class Game
+  attr_reader :title
 
-players = [john, sally, harriet]
-puts "There are #{players.size} players in the game."
-players.each do |player|
-  player.smash
-  player.heal
-  player.heal
-  puts player
+  def initialize(title)
+    @title = title
+    @players = []
+  end
+
+  def add_player(player)
+    @players << player
+  end
+
+  def play
+    puts "There are #{@players.size} players in #{@title}: "
+    @players.each do |player|
+      puts player
+    end
+    @players.each do |player|
+      player.smash
+      player.heal
+      player.heal
+      puts player
+    end
+  end
 end
 
-players.pop
-joe = Player.new("joe", 90)
-players.push(joe)
+swan = Player.new("swan")
+cowboy = Player.new("cowboy", 50)
+ajax = Player.new("ajax")
 
-puts "There are #{players.size} players in the game."
-players.each do |player|
-  player.smash
-  player.heal
-  player.heal
-  puts player
-end
+warriors = Game.new("Warriors")
+warriors.add_player(swan)
+warriors.add_player(cowboy)
+warriors.add_player(ajax)
+warriors.play
+
+keith = Player.new("keith")
+lance = Player.new("lance", 50)
+sven = Player.new("sven")
+
+voltron_force = Game.new("Voltron Force")
+voltron_force.add_player(keith)
+voltron_force.add_player(lance)
+voltron_force.add_player(sven)
+voltron_force.play
