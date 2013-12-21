@@ -2,7 +2,7 @@ require_relative "game"
 
 swan = Player.new("swan")
 cowboy = Player.new("cowboy", 50)
-ajax = Player.new("ajax")
+ajax = Player.new("ajax", 75)
 
 warriors = Game.new("Warriors")
 warriors.add_player(swan)
@@ -14,7 +14,7 @@ warriors.play
 
 keith = Player.new("keith")
 lance = Player.new("lance", 50)
-sven = Player.new("sven")
+sven = Player.new("sven", 25)
 
 voltron_force = Game.new("Voltron Force")
 voltron_force.add_player(keith)
