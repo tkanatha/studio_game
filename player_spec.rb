@@ -4,7 +4,7 @@ describe Player do
   before do
     $stdout = StringIO.new
   end
-  
+
   let(:initial_health) { 50 }
   let(:player) { Player.new("player", initial_health) }
 
@@ -40,5 +40,21 @@ describe Player do
   it "decreases health by 5 when smashed" do
     player.smash
     player.health.should == (50 - 5)
+  end
+
+  context "with a health greater than 150" do
+    let(:player) { Player.new("player", 150) }
+
+    it "is strong" do
+      player.should be_strong
+    end
+  end
+
+  context "with a health less than or equal to 100" do
+    let(:player) { Player.new("player", 100) }
+
+    it "is weak" do
+      player.should_not be_strong
+    end
   end
 end

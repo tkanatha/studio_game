@@ -1,3 +1,5 @@
+require_relative "die"
+
 class Game
   require_relative "player"
 
@@ -17,10 +19,17 @@ class Game
     @players.each do |player|
       puts player
     end
+
     @players.each do |player|
-      player.smash
-      player.heal
-      player.heal
+      die = Die.new
+      case die.roll_die
+      when 1..2
+        player.smash
+      when 3..4
+        puts "#{player.name} was skipped."
+      else
+        player.heal
+      end
       puts player
     end
   end
