@@ -8,7 +8,8 @@ warriors = Game.new("Warriors")
 warriors.add_player(swan)
 warriors.add_player(cowboy)
 warriors.add_player(ajax)
-warriors.play
+warriors.play(2)
+warriors.print_stats
 
 # new game
 
@@ -20,4 +21,5 @@ voltron_force = Game.new("Voltron Force")
 voltron_force.add_player(keith)
 voltron_force.add_player(lance)
 voltron_force.add_player(sven)
-voltron_force.play
+voltron_force.play(2)
+voltron_force.print_stats

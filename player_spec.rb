@@ -57,4 +57,15 @@ describe Player do
       player.should_not be_strong
     end
   end
+
+  context "in a collection of players" do
+    let(:player1) { Player.new("player1", 100) }
+    let(:player2) { Player.new("player2", 200) }
+    let(:player3) { Player.new("player3", 300) }
+    let(:players) { [player1, player2, player3] }
+
+    it "is sorted by decreasing score" do
+      players.sort.should == [player3, player2, player1]
+    end
+  end
 end

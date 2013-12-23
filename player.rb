@@ -32,6 +32,10 @@ class Player
   def strong?
     @health > 100
   end
+
+  def <=>(other)
+    other.score <=> score
+  end
 end
 
 # Example code below only runs when player.rb is executed from the command line
