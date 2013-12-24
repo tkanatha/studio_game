@@ -1,5 +1,6 @@
 require_relative "die"
 require_relative "game_turn"
+require_relative "treasure_trove"
 
 class Game
   require_relative "player"
@@ -27,6 +28,12 @@ class Game
         GameTurn.take_turn(player)
         puts player
       end
+    end
+
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.size} treasures in the game."
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
     end
   end
 

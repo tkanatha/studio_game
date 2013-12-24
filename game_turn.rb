@@ -1,3 +1,5 @@
+require_relative "treasure_trove"
+
 module GameTurn
   def self.take_turn(player)
     die = Die.new
@@ -9,6 +11,7 @@ module GameTurn
     else
       player.heal
     end
-
+    treasure = TreasureTrove.random
+    puts "#{player.name} found a #{treasure.name} worth #{treasure.points} points."
   end
 end
