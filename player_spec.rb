@@ -90,7 +90,27 @@ describe Player do
 
       player1.points.should == 500
     end
+
+    it "yields each found treasure and its total points" do
+      player1.found_treasure(Treasure.new(:sickle, 100))
+      player1.found_treasure(Treasure.new(:sickle, 100))
+      player1.found_treasure(Treasure.new(:spear, 50))
+      player1.found_treasure(Treasure.new(:knife, 5))
+      player1.found_treasure(Treasure.new(:knife, 5))
+      player1.found_treasure(Treasure.new(:knife, 5))
+      player1.found_treasure(Treasure.new(:knife, 5))
+      player1.found_treasure(Treasure.new(:knife, 5))
+
+      yielded = []
+      player1.each_found_treasure do |treasure|
+        yielded << treasure
+      end
+
+      yielded.should == [
+        Treasure.new(:sickle, 200), 
+        Treasure.new(:spear, 50), 
+        Treasure.new(:knife, 25)
+      ]
+    end
   end
-
-
 end
