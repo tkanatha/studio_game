@@ -55,6 +55,11 @@ class Player
       yield Treasure.new(name, points)
     end
   end
+
+  def self.from_csv(string)
+    name, health = string.split(',')
+    player = Player.new(name, Integer(health))
+  end
 end
 
 # Example code below only runs when player.rb is executed from the command line

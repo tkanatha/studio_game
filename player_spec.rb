@@ -112,5 +112,11 @@ describe Player do
         Treasure.new(:knife, 25)
       ]
     end
+    it "can be created from a CSV string" do  
+      player1 = Player.from_csv("player1,100")
+
+      player1.name.should == "Player1"
+      player1.health.should == 100
+    end
   end
 end
