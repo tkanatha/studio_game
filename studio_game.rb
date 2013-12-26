@@ -1,7 +1,15 @@
 require_relative "game"
+require_relative "clumsy_player"
+require_relative "berserk_player"
 
 warriors = Game.new("Warriors")
 warriors.load_players(ARGV.shift || "players.csv")
+
+ditzy = ClumsyPlayer.new("ditzy",105)
+warriors.add_player(ditzy)
+
+nutty = BerserkPlayer.new("nutty",50)
+warriors.add_player(nutty)
 
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
@@ -9,7 +17,7 @@ loop do
 
   case answer
   when /^\d+$/
-    warriors.play(answer.to_i) { warriors.total_points >= 2000 }
+    warriors.play(answer.to_i) { warriors.total_points >= 200000 }
   when 'quit', 'exit'
     warriors.print_stats
     break
@@ -19,15 +27,3 @@ loop do
 end
 
 warriors.save_high_scores
-# new game
-
-# keith = Player.new("keith")
-# lance = Player.new("lance", 50)
-# sven = Player.new("sven", 25)
-
-# voltron_force = Game.new("Voltron Force")
-# voltron_force.add_player(keith)
-# voltron_force.add_player(lance)
-# voltron_force.add_player(sven)
-# voltron_force.play(10) { voltron_force.total_points >= 2000 }
-# voltron_force.print_stats
